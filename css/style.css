@@ -1,0 +1,182 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body{
+  overflow: hidden;
+}
+
+/*------ startup ani-----*/
+
+body .start-up {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 110000;
+}
+
+.start-up svg {
+  fill: black;
+  display: block;
+  position: absolute;
+  top: 100%;
+}
+
+.loaderr {
+  width: 60px;
+  height: 60px;
+  display: grid;
+}
+
+.loaderr:before,
+.loaderr:after {
+  content: "";
+  grid-area: 1/1; 
+  background: #0d6efd;
+  clip-path: polygon(0 0,100% 0,100% 100%,75% 25%,0 0,0 100%,100% 100%,25% 75%,0 0);
+  animation: l20 1.5s infinite linear;
+}
+.loaderr:after {
+  clip-path: polygon(0 0,76% 24%,100% 100%,24% 76%);
+  --s:0;
+}
+@keyframes l20 {
+  0%      {transform: perspective(100px) rotate3d(1,var(--s,1),0,0)      } 
+  25%     {transform: perspective(100px) rotate3d(1,var(--s,1),0,-90deg) }
+  25.01%  {transform: perspective(100px) rotate3d(1,var(--s,1),0,-90deg) } 
+  40%,60% {transform: perspective(100px) rotate3d(1,var(--s,1),0,-180deg)} 
+  75%     {transform: perspective(100px) rotate3d(1,var(--s,1),0,-270deg)}
+  75.01%  {transform: perspective(100px) rotate3d(1,var(--s,1),0,-270deg)} 
+  90%,100%{transform: perspective(100px) rotate3d(1,var(--s,1),0,-360deg)}
+}
+
+/*------ loader -----------*/
+
+.loader {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #FFF;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border-bottom: 4px solid #09c;
+  border-left: 4px solid transparent;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+/*---------- side-bar-----------------*/
+
+aside {
+  position: fixed;
+  left: -240px;
+  top: 0;
+  bottom: 0;
+  white-space: nowrap;
+  z-index: 2100;
+}
+
+aside .side-nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+aside .side-nav ul li{
+  transition: 0.4s;
+}
+
+.Ystart{
+  transform: translateY(200px);
+}
+.Yend{
+  transform: translateY(0);
+}
+
+aside .toggler{
+  width: 45px;
+  background: white;
+}
+
+/*------------main section -----*/
+.main-section,
+.main-details,
+.category-sec,
+.area-sec,
+.Ingredients-sec,
+.contact-sec,
+.search-sec{
+  padding-left: 45px;
+}
+
+#mainData .meal .meal-layer,
+#categoriesData .meal .meal-layer,
+#searchData .meal .meal-layer{
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  left: 0;
+  background-color: rgb(249 246 246 / 79%);
+  transition: 0.5s;
+}
+
+#mainData .meal:hover .meal-layer,
+#categoriesData .meal:hover .meal-layer,
+#searchData .meal:hover .meal-layer{
+  top: 0;
+}
+
+/*--------------------------*/
+
+.main-details,
+.category-sec,
+.area-sec,
+.Ingredients-sec,
+.contact-sec,
+.search-sec{
+  display: none;
+}
+
+/*---- ingredients-section------*/
+
+#ingCard,
+#areaCard{
+  transition: 0.4s;
+}
+
+#ingCard:hover,
+#areaCard:hover{
+  transform: scale(1.1);
+  box-shadow: 0px 0px 10px gray;
+}
+
+#passTog,
+#rePassTog{
+  right: 35px;
+  top: 7px;
+  color: white;
+}
